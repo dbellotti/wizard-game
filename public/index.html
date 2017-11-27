@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Hello, world!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- Styles -->
+    <style>
+      /* you can style your program here */
+      .wizard {
+        background-image: url('https://orig00.deviantart.net/3909/f/2016/056/7/b/wizard_sprite_by_rienquish-d9t2api.png');
+        background-repeat: no-repeat;
+        height: 256px;
+        width: 256px;
+      }
+      .wizard-forward { background-position: 0 -256px; }
+      .wizard-right { background-position: 0 0; }
+      .wizard-back { background-position: -256px 0; }
+      .wizard-left { background-position: -256px -256px; }
+    </style>
+
+    <script src="elm.js"></script>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+
+    <!-- Elm App -->
+    <div id="elm-target"></div>
+    <script>
+      elmApp = Elm.Main.embed(document.getElementById('elm-target'));//, { });
+    </script>
+
+
+    <!-- Firebase JS -->
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCcXL1iXtgGSOfoNXbxTFIYLoM96uSIiDQ",
+        authDomain: "lord-of-light.firebaseapp.com",
+        databaseURL: "https://lord-of-light.firebaseio.com",
+        projectId: "lord-of-light",
+        storageBucket: "lord-of-light.appspot.com",
+        messagingSenderId: "940128296715"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+#! /bin/bash
+
+COMMAND=$@
+
+docker run -it --rm -v "$(pwd):/workdir" -w "/workdir" unibeautify/elm-format:latest $COMMAND

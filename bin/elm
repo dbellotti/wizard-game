@@ -1,0 +1,5 @@
+#! /bin/bash
+
+COMMAND=$@
+
+docker run -it --rm -v "$(pwd):/code" -w "/code" -e "HOME=/tmp" -u $UID:$GID codesimple/elm:0.18 $COMMAND

@@ -1,0 +1,6 @@
+#! /bin/bash
+
+COMMAND=$@
+FIREBASE_TOKEN=1/KQ-JUvMrzBfDs9RYzbCsgl_1YcXtWE9Ccpguti_Cddg
+
+docker run -it --rm -v "$(pwd):/code" -p 5000:5000 -p 9005:9005 dentych/firebase firebase $COMMAND --token "$FIREBASE_TOKEN"
