@@ -9,15 +9,6 @@ import Time exposing (Time, inMilliseconds)
 import Tuple exposing (first, second)
 
 
-main =
-    Html.program
-        { init = init
-        , view = view
-        , update = update
-        , subscriptions = subscriptions
-        }
-
-
 type alias Model =
     { keyCode : Int
     , wizard : Wizard
@@ -31,6 +22,9 @@ type alias Wizard =
     , speed : Int
     , isMovingXY : (Bool, Bool)
     }
+
+
+-- INIT
 
 
 init : ( Model, Cmd Msg )
@@ -48,7 +42,6 @@ init =
     )
 
 
-
 -- UPDATE
 
 
@@ -56,7 +49,6 @@ type Msg
     = KeyDownMsg Keyboard.KeyCode
     | KeyUpMsg Keyboard.KeyCode
     | Tick Time
-
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -68,17 +60,15 @@ update msg model =
                     model.wizard
 
                 timeDiff =
-                    time
-                        |> inMilliseconds
-                        |> round
+                    time |> inMilliseconds |> round
 
                 newWizard =
                     case (wizard.orientation, wizard.isMovingXY) of
-                      ("wizard-left",    (True, False)) -> { wizard | posX = wizard.posX - timeDiff }
-                      ("wizard-right",   (True, False)) -> { wizard | posX = wizard.posX + timeDiff }
-                      ("wizard-back",    (False, True)) -> { wizard | posY = wizard.posY + timeDiff }
-                      ("wizard-forward", (False, True)) -> { wizard | posY = wizard.posY - timeDiff }
-                      _                                 -> wizard
+                        ("wizard-left",    (True, False)) -> { wizard | posX = wizard.posX - timeDiff }
+                        ("wizard-right",   (True, False)) -> { wizard | posX = wizard.posX + timeDiff }
+                        ("wizard-back",    (False, True)) -> { wizard | posY = wizard.posY + timeDiff }
+                        ("wizard-forward", (False, True)) -> { wizard | posY = wizard.posY - timeDiff }
+                        _                                 -> wizard
 
             in
                 ( { model | wizard = newWizard }, Cmd.none )
@@ -91,11 +81,11 @@ update msg model =
 
                 newWizard =
                     case code of
-                      37 -> { wizard | isMovingXY = (True, False), orientation = "wizard-left" }
-                      39 -> { wizard | isMovingXY = (True, False), orientation = "wizard-right" }
-                      38 -> { wizard | isMovingXY = (False, True), orientation = "wizard-back" }
-                      40 -> { wizard | isMovingXY = (False, True), orientation = "wizard-forward" }
-                      _  -> wizard
+                        37 -> { wizard | isMovingXY = (True, False), orientation = "wizard-left" }
+                        39 -> { wizard | isMovingXY = (True, False), orientation = "wizard-right" }
+                        38 -> { wizard | isMovingXY = (False, True), orientation = "wizard-back" }
+                        40 -> { wizard | isMovingXY = (False, True), orientation = "wizard-forward" }
+                        _  -> wizard
 
             in
                 ( { model | wizard = newWizard , keyCode = code }, Cmd.none )
@@ -149,4 +139,16 @@ view model =
             ]
             []
         ]
+
+
+-- MAIN
+
+
+main =
+    Html.program
+        { init = init
+        , view = view
+        , update = update
+        , subscriptions = subscriptions
+        }
 
